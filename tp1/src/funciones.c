@@ -153,6 +153,8 @@ int calcular (
 	int validacion;
 	float BTC = 4606954.55;
 
+	system("cls");
+
 	* debitoAerolineas = precioAero * 0.9;
 	* debitoLatam = precioLat * 0.9;
 	* creditoAerolineas = precioAero * 1.25;
@@ -189,6 +191,7 @@ void informarResultados (
 		float* precioPorKmLatam,
 		float* precioPorKmAerolineas,
 		float* diferenciaDePrecios){
+	system("cls");
 	printf("\n\n---Informe de resultados---\n");
 
 	printf("\nLos kilometros ingresados son: %.2f km \n", kilometros);
@@ -217,6 +220,7 @@ void cargaForzada (float* kilometros, float* precioAero, float* precioLat, int* 
 
 char finalizarPrograma(){
 	char salir = 's';
+	system("cls");
 	printf("\n\n---Gracias por utilizar el Programa de Franco Donato Gonzalez---\n\n");
 	return salir;
 }
