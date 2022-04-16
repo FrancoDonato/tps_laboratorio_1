@@ -82,12 +82,15 @@ int menuOpciones(int* flagMenu1, int* flagMenu2, float* kilometros, float* preci
 int ingresarKilometros(float* kilometros, int* flagMenu1){
 	float km;
 	int validacion;
+	int cant = 0;
 
 	printf("\nIngrese los kilometros del vuelo: ");
-	scanf("%f", &km);
-	while (km <= 0){
+	fflush(stdin);
+	cant = scanf("%f", &km);
+	while (km <= 0 || cant == 0){
 		printf ("\nError, ingrese un numero mayor a 0...");
-		scanf("%f", &km);
+		fflush(stdin);
+		cant = scanf("%f", &km);
 		}
 
 	* kilometros = km;
@@ -104,23 +107,29 @@ int ingresarPrecios(float* precioAerolinea, float* precioLatam, int* flagMenu2){
    float precioAero;
    float precioLa;
    int validacion;
+   int cant1 = 0;
+   int cant2 = 0;
 
 
 	printf("\nIngrese el precio de Aerolinea : ");
-	scanf("%f", &precioAero);
+	fflush(stdin);
+	cant1 = scanf("%f", &precioAero);
 
-	while (precioAero <= 0){
+	while (precioAero <= 0 || cant1 == 0){
 			printf ("\nError, ingrese un numero mayor a 0...");
-			scanf("%f", &precioAero);
+			fflush(stdin);
+			cant1 = scanf("%f", &precioAero);
 			}
 
 
 	printf("\nIngrese el precio de Latam : ");
-	scanf("%f", &precioLa);
+	fflush(stdin);
+	cant2 = scanf("%f", &precioLa);
 
-	while (precioLa <= 0){
+	while (precioLa <= 0 || cant2 == 0){
 			printf ("\nError, ingrese un numero mayor a 0...");
-			scanf("%f", &precioLa);
+			fflush(stdin);
+			cant2 = scanf("%f", &precioLa);
 			}
 
 	* precioAerolinea = precioAero;
