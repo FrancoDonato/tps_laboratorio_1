@@ -6,9 +6,9 @@
 #include "conio.h"
 
 
-int menuOpciones();
-int ingresarKilometros(float* kilometros);
-int ingresarPrecios(float* precioAerolinea, float* precioLatam);
+int menuOpciones(int* flagMenu1, int* flagMenu2, float* kilometros, float* precioAero, float* precioLat);
+int ingresarKilometros(float* kilometros, int* flagMenu1);
+int ingresarPrecios(float* precioAerolinea, float* precioLatam, int* flagMenu2);
 int calcular (
 		float kilometros,
 		float precioAero,

@@ -6,6 +6,8 @@ int main(void) {
 	int flagIngresokm = 0;
 	int flagIngresoprecios = 0;
 	int flagCalculos = 0;
+	int flagMenu1 = 0;
+	int flagMenu2 = 0;
 	int flag = 0;
 	float kilometros;
 	float precioAero;
@@ -21,12 +23,12 @@ int main(void) {
 	float diferenciaDePrecios;
 
 	do{
-		switch(menuOpciones()){
+		switch(menuOpciones(&flagMenu1, &flagMenu2, &kilometros, &precioAero, &precioLat)){
 		case 1:
-			flagIngresokm = ingresarKilometros(&kilometros);
+			flagIngresokm = ingresarKilometros(&kilometros, &flagMenu1);
 			break;
 		case 2:
-			flagIngresoprecios = ingresarPrecios(&precioAero, &precioLat);
+			flagIngresoprecios = ingresarPrecios(&precioAero, &precioLat, &flagMenu2);
 			break;
 		case 3:
 			if(flagIngresokm == 0 || flagIngresoprecios == 0){
@@ -70,7 +72,7 @@ int main(void) {
 
 			}
 			else{
-				printf("\nAun no se han realizado los calculos, realicelos e intente de nuevo.\n");
+				printf("\nAun no se han realizado los calculos, realicelos e intente de nuevo.\n\n");
 			}
 			break;
 		case 5:
@@ -111,10 +113,10 @@ int main(void) {
 			salir = finalizarPrograma();
 			break;
 		case 7:
-			printf("Esta opcion no es un numero, por favor seleccione una opcion valida.\n");
+			printf("Esta opcion no es un numero, por favor seleccione una opcion valida.\n\n");
 			break;
 		default:
-			printf("Opcion invalida, por favor seleccione una opcion correcta\n");
+			printf("Opcion invalida, por favor seleccione una opcion correcta\n\n");
 		}
 
 		system("pause");

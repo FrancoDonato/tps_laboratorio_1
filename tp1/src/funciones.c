@@ -1,9 +1,13 @@
 
 #include "funciones.h"
 
-int menuOpciones(){
+int menuOpciones(int* flagMenu1, int* flagMenu2, float* kilometros, float* precioAero, float* precioLat){
 	int opcion;
 	int cant;
+
+	system("cls");
+
+	if(* flagMenu1 == 0 && * flagMenu2 == 0){
 	printf("1-Ingresar Kilometros: ");
 	printf("\n2-Ingresar Precio de Vuelos: ");
 	printf("\n3-Calcular todos los costos: ");
@@ -17,11 +21,65 @@ int menuOpciones(){
 	if(cant == 0){
 		opcion = 7;
 	}
+	}
+	else
+		if(* flagMenu1 == 1 && * flagMenu2 == 0){
+			printf("\nLos Km ingresados son: %.2f Km", * kilometros);
+			printf("\n\n1-Ingresar Kilometros: ");
+			printf("\n2-Ingresar Precio de Vuelos: ");
+			printf("\n3-Calcular todos los costos: ");
+			printf("\n4-Informar Resultados: ");
+			printf("\n5-Carga forzada de datos");
+			printf("\n6-Salir");
+			printf("\nElija la opcion que desee...");
+			fflush(stdin);
+			cant = scanf("%d", &opcion);
 
+			if(cant == 0){
+					opcion = 7;
+				}
+		}
+		else
+			if(* flagMenu1 == 0 && * flagMenu2 == 1){
+				printf("1-Ingresar Kilometros: ");
+				printf("\n2-Ingresar Precio de Vuelos: ");
+				printf("\n\n  a)Precio ingresado de Aerolineas: $ %.2f", * precioAero);
+				printf("\n  b)Precio ingresado de Latam: $ %.2f\n", * precioLat);
+				printf("\n3-Calcular todos los costos: ");
+				printf("\n4-Informar Resultados: ");
+				printf("\n5-Carga forzada de datos");
+				printf("\n6-Salir");
+				printf("\nElija la opcion que desee...");
+				fflush(stdin);
+				cant = scanf("%d", &opcion);
+
+				if(cant == 0){
+						opcion = 7;
+					}
+			}
+				else
+					if(* flagMenu1 == 1 && * flagMenu2 == 1){
+						printf("\nLos Km ingresados son: %.2f Km", * kilometros);
+						printf("\n\n1-Ingresar Kilometros: ");
+						printf("\n2-Ingresar Precio de Vuelos: ");
+						printf("\n\n  a)Precio ingresado de Aerolineas: $ %.2f", * precioAero);
+						printf("\n  b)Precio ingresado de Latam: $ %.2f\n", * precioLat);
+						printf("\n3-Calcular todos los costos: ");
+						printf("\n4-Informar Resultados: ");
+						printf("\n5-Carga forzada de datos");
+						printf("\n6-Salir");
+						printf("\nElija la opcion que desee...");
+						fflush(stdin);
+						cant = scanf("%d", &opcion);
+
+						if(cant == 0){
+							opcion = 7;
+						}
+					}
 	return opcion;
 }
 
-int ingresarKilometros(float* kilometros){
+int ingresarKilometros(float* kilometros, int* flagMenu1){
 	float km;
 	int validacion;
 
@@ -33,6 +91,7 @@ int ingresarKilometros(float* kilometros){
 		}
 
 	* kilometros = km;
+	* flagMenu1 = 1;
 
 	validacion = 1;
 
@@ -40,7 +99,7 @@ int ingresarKilometros(float* kilometros){
 }
 
 
-int ingresarPrecios(float* precioAerolinea, float* precioLatam){
+int ingresarPrecios(float* precioAerolinea, float* precioLatam, int* flagMenu2){
 
    float precioAero;
    float precioLa;
@@ -67,6 +126,8 @@ int ingresarPrecios(float* precioAerolinea, float* precioLatam){
 	* precioAerolinea = precioAero;
 
 	* precioLatam = precioLa;
+
+	* flagMenu2 = 1;
 
 	validacion = 1;
 
@@ -107,7 +168,7 @@ int calcular (
 
 	printf("\nEl precio por Km de Latam es : $ %.2f", * precioPorKmLat);
 
-	printf("\n\nLa diferencia entre el precio en debito de Aerolineas y Latam es de $ %.2f \n", * diferenciaDePrecios);
+	printf("\n\nLa diferencia entre el precio en debito de Aerolineas y Latam es de $ %.2f \n\n", * diferenciaDePrecios);
 	}
 
 	validacion = 1;
@@ -144,7 +205,7 @@ void informarResultados (
 	printf("\n c)Precio pagando con bitcoin: $ %.6f", * btcAerolineas);
 	printf("\n d)Precio unitario: $ %.2f", * precioPorKmAerolineas);
 
-	printf("\n\nLa diferencia de precios es: $ %.2f\n", * diferenciaDePrecios);
+	printf("\n\nLa diferencia de precios es: $ %.2f\n\n", * diferenciaDePrecios);
 }
 
 void cargaForzada (float* kilometros, float* precioAero, float* precioLat, int* flag){
