@@ -102,6 +102,7 @@ int main(void) {
 								&precioPorKmLat,
 								&precioPorKmAero,
 								&diferenciaDePrecios);
+			flag = 0;
 			flagIngresokm = 0;
 			flagIngresoprecios = 0;
 			flagCalculos = 0;
